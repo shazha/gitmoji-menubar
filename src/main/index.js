@@ -3,17 +3,16 @@
 // import { ipcMain } from 'electron'
 import preferences from '../renderer/preferences'
 const electron = require('electron')
-// const { globalShortcut, Menu, clipboard } = require('electron')
 const { globalShortcut, Menu } = require('electron')
+var path = require('path')
 var menubar = require('menubar')
-// var robot = require('robotjs')
 
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
  */
 if (process.env.NODE_ENV !== 'development') {
-  global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
+  global.__static = path.join(__dirname, '/static').replace(/\\/g, '\\\\')
 }
 
 const winURL = process.env.NODE_ENV === 'development'
@@ -21,26 +20,28 @@ const winURL = process.env.NODE_ENV === 'development'
   : `file://${__dirname}/index.html`
 
 const showOnRightClick = false
+let iconRelativePath = `../../${process.env.NODE_ENV === 'production' ? 'dist/electron/' : ''}static/IconTemplate.png`
 let options = {
-  tooltip: 'gitmoji menubar',
+  icon: path.join(__dirname, iconRelativePath),
+  tooltip: 'Gitmoji Menubar',
   index: winURL,
   preloadWindow: true,
   showOnRightClick: showOnRightClick,
+  width: 320,
+  height: 500,
   resizable: process.env.NODE_ENV === 'development'
 }
-if (process.env.NODE_ENV === 'development') {
-  options.width = 320
-  options.height = 500
-}
-var mb = menubar(options)
 
+var mb = menubar(options)
+mb.app.setAboutPanelOptions({
+  credits: 'Icon designed by Smashicons from Flaticon',
+  copyright: `Copyright © ${new Date().getFullYear()} Shaoan Zhang. All rights reserved`
+})
 mb.on('ready', function ready () {
   console.log('app is ready')
   registerGlobalShortcut(preferences.getGlobalShortcut())
   mb.app.on('hide-gitmoji-window', () => {
-    // clipboard.readText()
     mb.hideWindow()
-    // robot.typeString('clipboard.readText()')
   })
   mb.app.on('global-shortcut-updated', (e) => {
     registerGlobalShortcut(e)
@@ -81,13 +82,10 @@ mb.on('ready', function ready () {
     mb.tray.setContextMenu(trayMenu)
   } else {
     mb.tray.on('right-click', (event, bounds) => {
+      mb.hideWindow()
       mb.tray.popUpContextMenu(trayMenu)
     })
   }
-  mb.app.setAboutPanelOptions({
-    applicationName: 'gitmoji menubar',
-    applicationVersion: '0.1'
-  })
 })
 
 mb.on('after-hide', () => {

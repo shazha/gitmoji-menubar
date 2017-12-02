@@ -1,7 +1,7 @@
 {
   "name": "gitmoji-menubar",
-  "version": "0.0.0",
-  "author": "shazha <shaoan@outlook.com>",
+  "version": "0.1.0",
+  "author": "Shaoan Zhang <shaoan@outlook.com>",
   "description": "An electron-vue project",
   "license": null,
   "main": "./dist/electron/main.js",
@@ -19,7 +19,7 @@
     "postinstall": "npm run lint:fix"
   },
   "build": {
-    "productName": "gitmoji-menubar",
+    "productName": "Gitmoji Menubar",
     "appId": "org.simulatedgreg.electron-vue",
     "directories": {
       "output": "build"
