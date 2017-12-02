@@ -1,8 +1,5 @@
 <template>
   <div class="panel">
-    <!-- <p class="panel-heading">
-      gitmojis
-    </p> -->
     <div class="panel-block">
       <p class="control has-icons-left">
         <input class="input is-small" type="text" autofocus placeholder="search" v-model="query">
@@ -67,9 +64,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .panel-heading {
-//   position: fixed;
-//   width: 100%;
-//   z-index: 1024;
-// }
 </style>

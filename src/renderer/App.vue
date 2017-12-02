@@ -26,11 +26,9 @@
 <style lang="scss">
   // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
-$navbar-height: 2.0rem;
+$navbar-height: 2.5rem;
 $navbar-item-img-max-height: 0.5rem;
 $size-normal: $size-7;
-// $panel-heading-line-height: 1;
-// $panel-heading-size: 1rem;
 $modal-z: 1025;
 $modal-card-title-size: $size-7;
 $modal-card-head-padding: 5px;
@@ -39,8 +37,7 @@ $modal-card-head-padding: 5px;
 @import "~buefy/src/scss/buefy";
 
 .app-main {
-  padding-top: 2.0rem;
-  // padding-top: 34px;
+  padding-top: 2.5rem;
   transform: translate3d(0, 0, 0);
 }
 </style>

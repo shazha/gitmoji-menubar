@@ -5,17 +5,13 @@
       <nav class="navbar">
         <div class="container">
           <div class="navbar-brand">
-            <!-- <a class="navbar-item">
-              <img src="https://bulma.io/images/bulma-type-white.png" alt="<logo>">
-            </a> -->
-            <span class="navbar-item is-size-7 has-text-white">
+            <span class="navbar-item is-size-6 has-text-white">
               gitmoji menu
             </span>
-            <div class="navbar-item align-right">
-            <!-- <a class="button is-small is-primary is-inverted is-outlined" @click="showSettings=true">
-              <b-icon pack="fa" icon="gear"></b-icon>
-              <span class="is-extral-small">Settings</span>
-              </a> -->
+            <div class="navbar-item settings-menu">
+              <a class="tag is-primary is-rounded" @click="showSettings=true" title="Settings">
+              <b-icon pack="fa" icon="gear" class="has-text-white"></b-icon>
+              </a>
             </div>
           </div>
         </div>
@@ -59,12 +55,9 @@ export default {
   z-index: 1024;
   box-shadow: 0 2px 3px rgba(17, 17, 17, 0.1), 0 0 0 1px rgba(17, 17, 17, 0.1);
 }
-.align-right {
+.settings-menu {
   position: relative;
   margin-left: auto;
-}
-.is-extral-small {
-  font-size: 0.5rem;
 }
 </style>
 
