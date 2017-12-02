@@ -1,7 +1,7 @@
 <template>
 <div class="content">
 <b-field>
-  <label class="checkbox is-size-7">
+  <label class="checkbox is-size-7 label">
   <input type="checkbox" v-model="autoLaunch" :disabled="working">
   Launch at Login
 </label>

@@ -7,7 +7,7 @@
             <b-icon pack="fa" icon="github" size="is-small"></b-icon>
           </a>
         </p> -->
-        <p><b-icon pack="fa" icon="code" size="is-small"></b-icon> with <b-icon pack="fa" icon="heart" class="heart" size="is-small"></b-icon> by <a @click="open('https://github.com')">shazha</a>.</p>
+        <p><b-icon pack="fa" icon="code" size="is-small"></b-icon> with <b-icon pack="fa" icon="heart" class="heart" size="is-small"></b-icon> by <a href="#" @click="open('https://github.com')">shazha</a>.</p>
       </div>
     </div>
   </footer>

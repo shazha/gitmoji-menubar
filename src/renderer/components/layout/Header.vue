@@ -9,8 +9,8 @@
               gitmoji menu
             </span>
             <div class="navbar-item settings-menu">
-              <a class="tag is-primary is-rounded" @click="showSettings=true" title="Settings">
-              <b-icon pack="fa" icon="gear" class="has-text-white"></b-icon>
+              <a class="tag is-white is-rounded" @click="showSettings=true" title="Settings">
+              <b-icon pack="fa" size="is-small" icon="gear" type="is-primary" custom-size="fa-lg"></b-icon>
               </a>
             </div>
           </div>
@@ -23,7 +23,7 @@
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Settings</p>
-      <button class="delete" aria-label="close" @click="showSettings = false"></button>
+      <button class="delete" aria-label="close" href="#" @click="showSettings = false"></button>
     </header>
     <section class="modal-card-body">
       <settings></settings>

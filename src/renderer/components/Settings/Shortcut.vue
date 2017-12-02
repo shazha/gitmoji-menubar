@@ -1,18 +1,18 @@
 <template>
 <div class="content">
 <b-field>
-  <label class="label">shortcut</label>
+  <label class="label is-unselectable">Global Shortcut</label>
         <div v-if="shortcutDefined || recording" class="control tags has-addons">
           <span class="tag">
-            <span class="shortcut-key" :class="{'has-text-grey-light': !shortcut.shift, 'has-text-primary': shortcut.shift}" aria-label="Shift" title="Shift">&#8679;</span>
-          <span class="shortcut-key" :class="{'has-text-grey-light': !shortcut.alt, 'has-text-primary': shortcut.alt}" aria-label="Alt" title="Alt">&#8997;</span>
-          <span class="shortcut-key" :class="{'has-text-grey-light': !shortcut.meta, 'has-text-primary': shortcut.meta}" v-if="isMac" aria-label="Command key" title="Command key">&#8984;</span>
-          <span class="shortcut-key" :class="{'has-text-grey-light': !shortcut.meta, 'has-text-primary': shortcut.meta}" v-else aria-label="Windows key" title="Windows key">⊞</span>
-          <span class="shortcut-key" :class="{'has-text-grey-light': !shortcut.ctrl, 'has-text-primary': shortcut.ctrl}" aria-label="Ctrl" title="Ctrl">^</span>
-          <span class="shortcut-key" :class="{'has-text-primary': shortcut.char}">{{shortcut.char || '&nbsp;'}}</span>
+            <span class="shortcut-key is-unselectable" :class="{'has-text-grey-light': !shortcut.shift, 'has-text-primary': shortcut.shift}" aria-label="Shift" title="Shift">&#8679;</span>
+          <span class="shortcut-key is-unselectable" :class="{'has-text-grey-light': !shortcut.alt, 'has-text-primary': shortcut.alt}" aria-label="Alt" title="Alt">&#8997;</span>
+          <span class="shortcut-key is-unselectable" :class="{'has-text-grey-light': !shortcut.meta, 'has-text-primary': shortcut.meta}" v-if="isMac" aria-label="Command key" title="Command key">&#8984;</span>
+          <span class="shortcut-key is-unselectable" :class="{'has-text-grey-light': !shortcut.meta, 'has-text-primary': shortcut.meta}" v-else aria-label="Windows key" title="Windows key">⊞</span>
+          <span class="shortcut-key is-unselectable" :class="{'has-text-grey-light': !shortcut.ctrl, 'has-text-primary': shortcut.ctrl}" aria-label="Ctrl" title="Ctrl">^</span>
+          <span class="shortcut-key is-unselectable" :class="{'has-text-primary': shortcut.char}">{{shortcut.char || '&nbsp;'}}</span>
           </span>
           <a v-if="recording && !shortcutDefined" class="tag" href="#" @click="cancelRecording" aria-label="cancel" title="cancel">&#9099;</a>
-          <a v-else class="tag is-delete" href="#" @click="removeShortcut"></a>
+          <a v-else class="tag is-delete" href="#" @click="removeShortcut" title="unregister the shortcut"></a>
         </div>
         <a v-else class="control tag" href="#" @click="recordSequence">Record Shortcut</a>
   </b-field>
