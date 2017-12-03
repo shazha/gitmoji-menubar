@@ -15,6 +15,7 @@ class Gitmoji {
       .catch(err => {
         // TODO
         console.log(err)
+        throw new Error('failed to fetch gitmojis')
       })
   }
 
@@ -48,11 +49,19 @@ class Gitmoji {
       .catch(err => {
         // TODO
         console.log(err)
+        throw err
       })
   }
 
   _loadCachedEmojis (cachePath) {
-    return Promise.resolve(JSON.parse(fs.readFileSync(cachePath)))
+    return new Promise((resolve, reject) => {
+      fs.readFile(cachePath, (err, data) => {
+        if (err) {
+          return reject(err)
+        }
+        resolve(JSON.parse(data))
+      })
+    })
   }
 
   _getCachePath () {
@@ -75,5 +84,4 @@ class Gitmoji {
   }
 }
 
-// module.exports = Gitmoji
 export default Gitmoji
