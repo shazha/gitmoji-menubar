@@ -83,6 +83,7 @@ mb.on('ready', function ready () {
     },
     {
       label: 'Quit',
+      accelerator: 'CommandOrControl+Q',
       role: 'quit'
     }
   ]

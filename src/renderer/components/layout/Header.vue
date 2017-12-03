@@ -5,7 +5,7 @@
       <nav class="navbar">
         <div class="container">
           <div class="navbar-brand">
-            <span class="navbar-item is-size-6 has-text-white">
+            <span class="navbar-item is-size-6 has-text-white is-unselectable">
               gitmoji menu
             </span>
             <div class="navbar-item settings-menu">
