@@ -2,7 +2,7 @@
   <div class="panel">
     <div class="panel-block">
       <p class="control has-icons-left">
-        <input ref="search" class="input is-small" type="text" autofocus placeholder="search" v-model="query">
+        <input ref="search" class="input is-small" type="text" autofocus placeholder="search" v-model="query" @keydown.enter="onEnter">
         <span class="icon is-small is-left">
           <b-icon pack="fa" icon="search"></b-icon>
         </span>
@@ -57,6 +57,13 @@ export default {
         let lowerQuery = this.query.toLowerCase()
         gitmoji.show = gitmoji.name.toLowerCase().includes(lowerQuery) || gitmoji.description.toLowerCase().includes(lowerQuery)
       })
+    },
+
+    onEnter () {
+      let firstMatched = this.list.findIndex(ele => ele.show)
+      if (firstMatched > -1) {
+        this.copyGitmoji(firstMatched)
+      }
     },
 
     copyGitmoji (index) {
