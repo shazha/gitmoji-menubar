@@ -19,7 +19,8 @@ if (!isDev) {
 const winURL = isDev ? `http://localhost:9080` : `file://${__dirname}/index.html`
 
 const showOnRightClick = false
-let iconRelativePath = `../../${isDev ? '' : 'dist/electron/'}static/IconTemplate.png`
+let iconFileName = isMac ? 'IconTemplate.png' : 'Icon.png'
+let iconRelativePath = `../../${isDev ? '' : 'dist/electron/'}static/${iconFileName}`
 let options = {
   icon: path.join(__dirname, iconRelativePath),
   tooltip: 'Gitmoji Menubar',
