@@ -3,7 +3,7 @@
   <div class="panel">
     <div class="panel-block">
       <p class="control has-icons-left">
-        <input ref="search" class="input is-small" type="text" autofocus placeholder="search" v-model="query" @keydown.enter="onEnter" @keydown.down="onArrow(1)" @keydown.up="onArrow(-1)">
+        <input ref="search" class="input is-small" type="text" autofocus placeholder="search" v-model="query" @keydown.enter="onEnter" @keydown.down.prevent="onArrow(1)" @keydown.up.prevent="onArrow(-1)">
         <span class="icon is-small is-left">
           <b-icon pack="fa" icon="search"></b-icon>
         </span>
