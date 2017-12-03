@@ -4,17 +4,17 @@
 
 ## Screenshot
 
-![screenshot](ScreenShot.png)
+![screenshot-mac](Screenshot-mac.png)   ![screenshot-windows](Screenshot-win.png)
 
 ## Install
 
 ### OS X
-Download [the latest version for Mac]() from release page, unzip it and drag into your Application folder
+Download [the latest version for Mac](https://github.com/shazha/gitmoji-menubar/releases) from release page, unzip it and drag into your Application folder
 
 **Note:** The application is not code-sgined. You need to hold `Ctrl^` and click on the application's icon and choose `Open` from the context menu.
 
 ### Windows
-Download [the latest version for Windows]() from release page
+Download [the latest version for Windows](https://github.com/shazha/gitmoji-menubar/releases) from release page, unzip it anywhere and run the installer.
 
 ### Linux
 build the app by run `npm run build:dir` or `npm run build`
