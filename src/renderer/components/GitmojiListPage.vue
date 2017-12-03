@@ -36,7 +36,9 @@ export default {
   created () {
     this.fetchGitemojis(new Gitmoji(this.$http))
     this.$electron.ipcRenderer.on('after-show', () => {
-      this.$refs.search.focus()
+      process.nextTick(() => {
+        this.$refs.search.focus()
+      })
     })
   },
   methods: {
@@ -60,7 +62,7 @@ export default {
     copyGitmoji (index) {
       this.query = ''
       this.$electron.clipboard.writeText(this.list[index].code)
-      this.$electron.remote.app.emit('hide-gitmoji-window')
+      this.$electron.ipcRenderer.send('hide-gitmoji-window')
     }
   }
 }
