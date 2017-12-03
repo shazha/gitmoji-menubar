@@ -7,6 +7,7 @@ var path = require('path')
 var menubar = require('menubar')
 
 const isDev = process.env.NODE_ENV === 'development'
+const isMac = process.platform === 'darwin'
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
@@ -32,10 +33,12 @@ let options = {
 
 var mb = menubar(options)
 
-mb.app.setAboutPanelOptions({
-  credits: 'Icon designed by Smashicons from Flaticon',
-  copyright: `Copyright © ${new Date().getFullYear()} Shaoan Zhang. All rights reserved`
-})
+if (isMac) {
+  mb.app.setAboutPanelOptions({
+    credits: 'Icon designed by Smashicons from Flaticon',
+    copyright: `Copyright © ${new Date().getFullYear()} Shaoan Zhang. All rights reserved`
+  })
+}
 
 ipcMain.on('hide-gitmoji-window', (e) => { mb.hideWindow() })
 
@@ -67,21 +70,11 @@ mb.on('ready', function ready () {
 
   var trayMenuTemplate = [
     {
-      label: 'Preferences'
-    },
-    {
-      type: 'separator'
-    },
-    {
       label: 'Feedback',
       click: function () {
         // TODO: update the url
         electron.shell.openExternal('https://github.com')
       }
-    },
-    {
-      label: 'About',
-      role: 'about'
     },
     {
       type: 'separator'
@@ -91,6 +84,12 @@ mb.on('ready', function ready () {
       role: 'quit'
     }
   ]
+  if (isMac) {
+    trayMenuTemplate.splice(1, 0, {
+      label: 'About',
+      role: 'about'
+    })
+  }
   var trayMenu = Menu.buildFromTemplate(trayMenuTemplate)
   if (showOnRightClick) {
     mb.tray.setContextMenu(trayMenu)
