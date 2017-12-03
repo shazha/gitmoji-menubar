@@ -2,8 +2,8 @@
   "name": "gitmoji-menubar",
   "version": "0.1.0",
   "author": "Shaoan Zhang <shaoan@outlook.com>",
-  "description": "An electron-vue project",
-  "license": null,
+  "description": "A menubar client for gitmoji",
+  "license": "MIT",
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
