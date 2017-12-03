@@ -2,7 +2,7 @@
   <div class="panel">
     <div class="panel-block">
       <p class="control has-icons-left">
-        <input class="input is-small" type="text" autofocus placeholder="search" v-model="query">
+        <input ref="search" class="input is-small" type="text" autofocus placeholder="search" v-model="query">
         <span class="icon is-small is-left">
           <b-icon pack="fa" icon="search"></b-icon>
         </span>
@@ -35,6 +35,9 @@ export default {
   },
   created () {
     this.fetchGitemojis(new Gitmoji(this.$http))
+    this.$electron.ipcRenderer.on('after-show', () => {
+      this.$refs.search.focus()
+    })
   },
   methods: {
     fetchGitemojis (gitmojiApi) {

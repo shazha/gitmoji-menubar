@@ -43,6 +43,11 @@ export default {
     return {
       showSettings: false
     }
+  },
+  created () {
+    this.$electron.ipcRenderer.on('will-hide', () => {
+      this.showSettings = false
+    })
   }
 }
 </script>

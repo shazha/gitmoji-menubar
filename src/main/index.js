@@ -47,6 +47,14 @@ mb.app.on('will-quit', function () {
   globalShortcut.unregisterAll()
 })
 
+mb.on('after-show', function () {
+  mb.window.webContents.send('after-show')
+})
+
+mb.on('hide', () => {
+  mb.window.webContents.send('will-hide')
+})
+
 mb.on('after-hide', () => {
   mb.app.hide()
   mb.setOption('x', undefined)
