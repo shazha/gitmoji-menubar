@@ -1,26 +1,24 @@
 'use strict'
 
-// import { ipcMain } from 'electron'
 import preferences from '../renderer/preferences'
 const electron = require('electron')
-const { globalShortcut, Menu } = require('electron')
+const { globalShortcut, Menu, ipcMain } = require('electron')
 var path = require('path')
 var menubar = require('menubar')
 
+const isDev = process.env.NODE_ENV === 'development'
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
  */
-if (process.env.NODE_ENV !== 'development') {
+if (!isDev) {
   global.__static = path.join(__dirname, '/static').replace(/\\/g, '\\\\')
 }
 
-const winURL = process.env.NODE_ENV === 'development'
-  ? `http://localhost:9080`
-  : `file://${__dirname}/index.html`
+const winURL = isDev ? `http://localhost:9080` : `file://${__dirname}/index.html`
 
 const showOnRightClick = false
-let iconRelativePath = `../../${process.env.NODE_ENV === 'production' ? 'dist/electron/' : ''}static/IconTemplate.png`
+let iconRelativePath = `../../${isDev ? '' : 'dist/electron/'}static/IconTemplate.png`
 let options = {
   icon: path.join(__dirname, iconRelativePath),
   tooltip: 'Gitmoji Menubar',
@@ -29,27 +27,35 @@ let options = {
   showOnRightClick: showOnRightClick,
   width: 320,
   height: 500,
-  resizable: process.env.NODE_ENV === 'development'
+  resizable: isDev
 }
 
 var mb = menubar(options)
+
 mb.app.setAboutPanelOptions({
   credits: 'Icon designed by Smashicons from Flaticon',
   copyright: `Copyright © ${new Date().getFullYear()} Shaoan Zhang. All rights reserved`
 })
+
+ipcMain.on('hide-gitmoji-window', (e) => { mb.hideWindow() })
+
+mb.app.on('global-shortcut-updated', (e) => {
+  registerGlobalShortcut(e)
+})
+
+mb.app.on('will-quit', function () {
+  globalShortcut.unregisterAll()
+})
+
+mb.on('after-hide', () => {
+  mb.app.hide()
+  mb.setOption('x', undefined)
+  mb.setOption('y', undefined)
+})
+
 mb.on('ready', function ready () {
   console.log('app is ready')
   registerGlobalShortcut(preferences.getGlobalShortcut())
-  mb.app.on('hide-gitmoji-window', () => {
-    mb.hideWindow()
-  })
-  mb.app.on('global-shortcut-updated', (e) => {
-    registerGlobalShortcut(e)
-  })
-  // ipcMain.on('hide-gitmoji-window', (event, arg) => { mb.hideWindow() })
-  mb.app.on('will-quit', function () {
-    globalShortcut.unregisterAll()
-  })
 
   var trayMenuTemplate = [
     {
@@ -86,12 +92,6 @@ mb.on('ready', function ready () {
       mb.tray.popUpContextMenu(trayMenu)
     })
   }
-})
-
-mb.on('after-hide', () => {
-  mb.app.hide()
-  mb.setOption('x', undefined)
-  mb.setOption('y', undefined)
 })
 
 function registerGlobalShortcut (shortcut) {
