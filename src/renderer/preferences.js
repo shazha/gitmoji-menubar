@@ -16,7 +16,7 @@ class Preferences {
             alt: false,
             ctrl: true,
             meta: false,
-            char: '1'
+            char: '/'
           }
         }
       })
