@@ -32,6 +32,8 @@ $size-normal: $size-7;
 $modal-z: 1025;
 $modal-card-title-size: $size-7;
 $modal-card-head-padding: 5px;
+$panel-block-active-border-left-color: $primary;
+$panel-block-active-color: $primary;
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
