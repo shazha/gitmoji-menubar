@@ -75,8 +75,7 @@ mb.on('ready', function ready () {
     {
       label: 'Feedback',
       click: function () {
-        // TODO: update the url
-        electron.shell.openExternal('https://github.com')
+        electron.shell.openExternal('https://github.com/shazha/gitmoji-menubar/issues')
       }
     },
     {

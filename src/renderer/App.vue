@@ -2,7 +2,7 @@
   <div id="app">
     <app-header></app-header>
     <gitmoji-list-page class="app-main"></gitmoji-list-page>
-    <app-footer></app-footer>
+    <!-- <app-footer></app-footer> -->
   </div>
 </template>
 
@@ -41,5 +41,8 @@ $panel-block-active-color: $primary;
 .app-main {
   padding-top: 2.5rem;
   transform: translate3d(0, 0, 0);
+}
+::-webkit-scrollbar {
+    display: none;
 }
 </style>

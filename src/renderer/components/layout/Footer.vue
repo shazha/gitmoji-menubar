@@ -2,12 +2,7 @@
   <footer class="footer">
     <div class="container is-fluid">
       <div class="content has-text-centered is-size-7">
-        <!-- <p class="social">
-          <a @click="open('https://github.com')">
-            <b-icon pack="fa" icon="github" size="is-small"></b-icon>
-          </a>
-        </p> -->
-        <p><b-icon pack="fa" icon="code" size="is-small"></b-icon> with <b-icon pack="fa" icon="heart" class="heart" size="is-small"></b-icon> by <a href="#" @click="open('https://github.com')">shazha</a>.</p>
+        <p><b-icon pack="fa" icon="code" size="is-small"></b-icon> with <b-icon pack="fa" icon="heart" class="heart" size="is-small"></b-icon> by <a href="#" @click="open('https://github.com/shazha/gitmoji-menubar')">shazha</a>.</p>
       </div>
     </div>
   </footer>
