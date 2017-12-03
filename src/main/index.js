@@ -60,7 +60,9 @@ mb.on('hide', () => {
 })
 
 mb.on('after-hide', () => {
-  mb.app.hide()
+  if (isMac) {
+    mb.app.hide()
+  }
   mb.setOption('x', undefined)
   mb.setOption('y', undefined)
 })
